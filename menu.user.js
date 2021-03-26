@@ -1,13 +1,13 @@
 // ==UserScript==
-// @name         TheZombsProject: Menu
-// @namespace    https://github.com/eh7644/thezombsproject
+// @name         TheZombsProject
+// @namespace    https://github.com/eh7644/thezombsproject/
 // @version      1.0.0
-// @description  Script menu, script is installed at https://github.com/eh7644/thezombsproject/raw/main/script.user.js
+// @description  Instructions at the GitHub page on how to install and use it, aka https://github.com/eh7644/thezombsproject/blob/main/README.md
 // @author       thezombsproject
 // @match        zombs.io
+// @require      https://github.com/eh7644/thezombsproject/raw/main/menu.user.js
 // @grant        none
 // ==/UserScript==
-
 let css = `
 .btn-bluee {
   background-color: #003cff;
@@ -147,7 +147,6 @@ background: rgba(0, 0, 0, 0.2);
 .hud-spell-icons .hud-spell-icon[data-type="Zippity"]::before {
 background-image: url("https://cdn2.iconfinder.com/data/icons/atrous/512/hammer_tool-512.png");
 }
-
 .hud-menu-zipp .hud-the-tab {
 position: relative;
 height: 40px;
@@ -171,16 +170,13 @@ color: #eee;
 cursor: pointer;
 }
 `;
-
 let styles = document.createElement("style");
 styles.appendChild(document.createTextNode(css2));
 document.head.appendChild(styles);
         var menus = document.getElementsByClassName("hud-menu");
-
 // class changing
 document.getElementsByClassName("hud-intro-form")[0].style.height = "300px";
 document.getElementsByClassName("hud-intro-play")[0].setAttribute("class", "btn btn-blue hud-intro-play");
-
 // spell icon
 let spell = document.createElement("div");
 spell.classList.add("hud-spell-icon");
@@ -191,7 +187,6 @@ spell.innerHTML = `<div class="hud-tooltip-menu-icon">
 spell.innerHTML = "Main";
 spell.classList.add("hud-zipp-icon");
 document.getElementsByClassName("hud-spell-icons")[0].appendChild(spell);
-
 //Menu for spell icon
 let modHTML = `
 <div class="hud-menu-zipp">
@@ -217,7 +212,6 @@ document.getElementsByClassName("hud-zipp-icon")[0].addEventListener("click", fu
         zipz123.style.display = "none";
   };
 });
-
 let _menu = document.getElementsByClassName("hud-menu-icon");
 let _spell = document.getElementsByClassName("hud-spell-icon");
 let allIcon = [
@@ -227,7 +221,6 @@ let allIcon = [
   _spell[0],
   _spell[1]
 ];
-
 allIcon.forEach(function(elem) {
         elem.addEventListener("click", function() {
                 if(zipz123.style.display == "block") {
@@ -235,7 +228,6 @@ allIcon.forEach(function(elem) {
                 };
         });
 });
-
 // key to open and close
 function modm() {
         if(zipz123.style.display == "none") {
@@ -276,7 +268,6 @@ Object.entries(game.ui.components.Leaderboard.leaderboardData).forEach((item => 
 }))
     return JSON.stringify(current)
 }
-
   document.getElementsByClassName("hud-settings-grid")[0].innerHTML = `
 <div style="text-align:center"><br>
 <hr />
@@ -289,43 +280,25 @@ Object.entries(game.ui.components.Leaderboard.leaderboardData).forEach((item => 
 <h3>Sell & Upgrade</h3>
 <hr />
 <button class=\"btn btn-greenn\"style=\"width: 45%;\" onclick=\"SellWalls();\">Sell Walls?</button>
-
 <button class=\"btn btn-greenn\"style=\"width: 45%;\" onclick=\"SellDoors();\">Sell Doors?</button>
-
 <button class=\"btn btn-greenn\"style=\"width: 45%;\" onclick=\"SellSlowTraps();\">Sell Slow Traps?</button>
-
 <button class=\"btn btn-greenn\"style=\"width: 45%;\" onclick=\"SellArrows();\">Sell Arrows?</button>
-
 <button class=\"btn btn-greenn\"style=\"width: 45%;\" onclick=\"SellCannons();\">Sell Cannons?</button>
-
 <button class=\"btn btn-greenn\"style=\"width: 45%;\" onclick=\"SellMelees();\">Sell Melees?</button>
-
 <button class=\"btn btn-greenn\"style=\"width: 45%;\" onclick=\"SellBombs();\">Sell Bombs?</button>
-
 <button class=\"btn btn-greenn\"style=\"width: 45%;\" onclick=\"SellMages();\">Sell Mages?</button>
-
 <button class=\"btn btn-greenn\"style=\"width: 45%;\" onclick=\"SellGoldMines();\">Sell Gold Mines?</button>
-
 <button class=\"btn btn-greenn\"style=\"width: 45%;\" onclick=\"SellHarvesters();\">Sell Harvesters?</button>
 <br><br>
 <button class=\"btn btn-orangee\"style=\"width: 45%;\" onclick=\"UpgradeWalls();\">Upgrade Walls?</button>
-
 <button class=\"btn btn-orangee\"style=\"width: 45%;\" onclick=\"UpgradeDoors();\">Upgrade Doors?</button>
-
 <button class=\"btn btn-orangee\"style=\"width: 45%;\" onclick=\"UpgradeSlowTraps();\">UpgradeSlowTraps?</button>
-
 <button class=\"btn btn-orangee\"style=\"width: 45%;\" onclick=\"UpgradeArrows();\">Upgrade Arrows?</button>
-
 <button class=\"btn btn-orangee\"style=\"width: 45%;\" onclick=\"UpgradeCannons();\">Upgrade Cannons?</button>
-
 <button class=\"btn btn-orangee\"style=\"width: 45%;\" onclick=\"UpgradeMelees();\">Upgrade Melees?</button>
-
 <button class=\"btn btn-orangee\"style=\"width: 45%;\" onclick=\"UpgradeBombs();\">Upgrade Bombs?</button>
-
 <button class=\"btn btn-orangee\"style=\"width: 45%;\" onclick=\"UpgradeMages();\">Upgrade Mages?</button>
-
 <button class=\"btn btn-orangee\"style=\"width: 45%;\" onclick=\"UpgradeGoldMines();\">UpgradeGoldMines?</button>
-
 <button class=\"btn btn-orangee\"style=\"width: 45%;\" onclick=\"UpgradeHarvesters();\">Upgrade Harvesters?</button>
 <hr />
 <h3>Information</h3>
@@ -336,7 +309,6 @@ window.SellWalls = function() {
     var entities = Game.currentGame.world.entities;
     for (var uid in entities) {
         if (!entities.hasOwnProperty(uid)) continue;
-
         var obj = entities[uid];
         if (obj.fromTick.model == "Wall") {
             Game.currentGame.network.sendRpc({
@@ -350,7 +322,6 @@ window.SellDoors = function() {
     var entities = Game.currentGame.world.entities;
     for (var uid in entities) {
         if (!entities.hasOwnProperty(uid)) continue;
-
         var obj = entities[uid];
         if (obj.fromTick.model == "Door") {
             Game.currentGame.network.sendRpc({
@@ -364,7 +335,6 @@ window.SellSlowTraps = function() {
     var entities = Game.currentGame.world.entities;
     for (var uid in entities) {
         if (!entities.hasOwnProperty(uid)) continue;
-
         var obj = entities[uid];
         if (obj.fromTick.model == "SlowTrap") {
             Game.currentGame.network.sendRpc({
@@ -378,7 +348,6 @@ window.SellArrows = function() {
     var entities = Game.currentGame.world.entities;
     for (var uid in entities) {
         if (!entities.hasOwnProperty(uid)) continue;
-
         var obj = entities[uid];
         if (obj.fromTick.model == "ArrowTower") {
             Game.currentGame.network.sendRpc({
@@ -392,7 +361,6 @@ window.SellCannons = function() {
     var entities = Game.currentGame.world.entities;
     for (var uid in entities) {
         if (!entities.hasOwnProperty(uid)) continue;
-
         var obj = entities[uid];
         if (obj.fromTick.model == "CannonTower") {
             Game.currentGame.network.sendRpc({
@@ -406,7 +374,6 @@ window.SellBombs = function() {
     var entities = Game.currentGame.world.entities;
     for (var uid in entities) {
         if (!entities.hasOwnProperty(uid)) continue;
-
         var obj = entities[uid];
         if (obj.fromTick.model == "BombTower") {
             Game.currentGame.network.sendRpc({
@@ -420,7 +387,6 @@ window.SellMages = function() {
     var entities = Game.currentGame.world.entities;
     for (var uid in entities) {
         if (!entities.hasOwnProperty(uid)) continue;
-
         var obj = entities[uid];
         if (obj.fromTick.model == "MagicTower") {
             Game.currentGame.network.sendRpc({
@@ -434,7 +400,6 @@ window.SellMelees = function() {
     var entities = Game.currentGame.world.entities;
     for (var uid in entities) {
         if (!entities.hasOwnProperty(uid)) continue;
-
         var obj = entities[uid];
         if (obj.fromTick.model == "MeleeTower") {
             Game.currentGame.network.sendRpc({
@@ -448,7 +413,6 @@ window.SellGoldMines = function() {
     var entities = Game.currentGame.world.entities;
     for (var uid in entities) {
         if (!entities.hasOwnProperty(uid)) continue;
-
         var obj = entities[uid];
         if (obj.fromTick.model == "GoldMine") {
             Game.currentGame.network.sendRpc({
@@ -462,7 +426,6 @@ window.SellHarvesters = function() {
     var entities = Game.currentGame.world.entities;
     for (var uid in entities) {
         if (!entities.hasOwnProperty(uid)) continue;
-
         var obj = entities[uid];
         if (obj.fromTick.model == "Harvester") {
             Game.currentGame.network.sendRpc({
